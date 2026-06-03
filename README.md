@@ -40,20 +40,6 @@ Slot OR Common Name (CN): Provide the target identifier. The script loops throug
 Output Architecture
 Every successful execution produces an isolated tracking directory stamped with the exact operational runtime timestamp (e.g., csr_run_2026-06-03_15-45-00/).
 
-Inside this folder, files are organized by cryptographic structure:
-
-Plaintext
-📁 csr_run_[Timestamp]/
-├── 📁 ECDSA/
-│   ├── 📄 domain_com_ECDSA.pem
-│   └── 📄 domain_com_ECDSA.txt
-├── 📁 RSA/
-│   ├── 📄 domain_com_RSA.pem
-│   └── 📄 domain_com_RSA.txt
-└── 📊 csr_summary_[Timestamp].xlsx
-
----
-
 ## Prerequisites
 
 ### 1. Local EdgeGrid Credentials
