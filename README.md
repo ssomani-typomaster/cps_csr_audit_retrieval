@@ -23,6 +23,36 @@ The script automatically executes structural decoding checks to validate parse r
 4. **Isolating Outputs:** Generates a unique execution run environment matching the exact tracking signature `csr_run_YYYY-MM-DD_HH-MM-SS/`.
 
 ---
+## How to Use the Script
+
+Follow these steps to successfully execute a batch run:
+
+1. Set Up Your Directory Workspace
+Ensure your Python script (main.py) and your data spreadsheet (csr_generator.xlsx) are placed together inside the exact same folder.
+
+2. Update the Excel Control Sheet
+Open your csr_generator.xlsx file and navigate to the tab named CSR Generator. Update the following columns before executing the run:
+
+accountSwitchKey (CRITICAL): You must provide the valid Akamai account identification tracking key string for each row. The script relies heavily on this to route API requests to the proper context.
+
+Slot OR Common Name (CN): Provide the target identifier. The script loops through your rows and cross-references them using Slot as its primary lookup channel. If a slot is missing, it will automatically fall back to locating the target using the Common Name (CN).
+
+Output Architecture
+Every successful execution produces an isolated tracking directory stamped with the exact operational runtime timestamp (e.g., csr_run_2026-06-03_15-45-00/).
+
+Inside this folder, files are organized by cryptographic structure:
+
+Plaintext
+📁 csr_run_[Timestamp]/
+├── 📁 ECDSA/
+│   ├── 📄 domain_com_ECDSA.pem
+│   └── 📄 domain_com_ECDSA.txt
+├── 📁 RSA/
+│   ├── 📄 domain_com_RSA.pem
+│   └── 📄 domain_com_RSA.txt
+└── 📊 csr_summary_[Timestamp].xlsx
+
+---
 
 ## Prerequisites
 
